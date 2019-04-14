@@ -1,0 +1,56 @@
+{
+  "name": "react-mongo-books",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "client:serve": "parcel client/index.html",
+    "server:serve": "nodemon --experimental-modules server/index.mjs",
+    "client:build": "parcel --build client/index.html",
+    "netlify-lambda:build": "netlify-lambda build netlify-lambda",
+    "netlify:build": "npm run netlify-lambda:build && npm run client:build",
+    "start": "concurrently \"npm run server:serve\" \"npm run client:serve\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/netcell/react-mongo-books.git"
+  },
+  "author": "netcell",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/netcell/react-mongo-books/issues"
+  },
+  "homepage": "https://github.com/netcell/react-mongo-books#readme",
+  "devDependencies": {
+    "axios": "^0.18.0",
+    "classnames": "^2.2.6",
+    "concurrently": "^4.1.0",
+    "netlify-lambda": "^1.4.3",
+    "nodemon": "^1.18.11",
+    "parcel-bundler": "^1.12.3",
+    "query-string": "^6.4.2",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-redux": "^7.0.2",
+    "react-router-dom": "^5.0.0",
+    "redux": "^4.0.1",
+    "redux-logger": "^3.0.6",
+    "redux-rest-resource": "^0.22.1",
+    "redux-thunk": "^2.3.0",
+    "styled-components": "^4.2.0",
+    "use-react-router": "^1.0.5"
+  },
+  "staticFiles": {
+    "staticPath": "static"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "cors": "^2.8.5",
+    "dotenv": "^7.0.0",
+    "express": "^4.16.4",
+    "lodash": "^4.17.11",
+    "mongoose": "^5.5.1",
+    "serverless-http": "^1.9.1"
+  }
+}
