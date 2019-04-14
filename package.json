@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "client:serve": "parcel client/index.html",
-    "server:serve": "nodemon --experimental-modules server/index.mjs",
+    "server:serve": "nodemon --experimental-modules netlify-lambda/server/index.mjs",
     "client:build": "parcel build client/index.html",
     "netlify-lambda:build": "netlify-lambda build netlify-lambda",
     "netlify:build": "npm run netlify-lambda:build && npm run client:build",
@@ -29,6 +29,7 @@
     "netlify-lambda": "^1.4.3",
     "nodemon": "^1.18.11",
     "parcel-bundler": "^1.12.3",
+    "parcel-plugin-copy": "^1.0.2",
     "query-string": "^6.4.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
