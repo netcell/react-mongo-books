@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "client:serve": "parcel client/index.html",
     "server:serve": "nodemon --experimental-modules server/index.mjs",
-    "client:build": "parcel --build client/index.html",
+    "client:build": "parcel build client/index.html",
     "netlify-lambda:build": "netlify-lambda build netlify-lambda",
     "netlify:build": "npm run netlify-lambda:build && npm run client:build",
     "start": "concurrently \"npm run server:serve\" \"npm run client:serve\""
