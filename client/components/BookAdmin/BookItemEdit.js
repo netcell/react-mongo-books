@@ -6,7 +6,7 @@ import {
 	styleBookInfoWrapper,
 	styleBookTitle,
 	styleAuthorTitle,
-} from './BookItemStyles';
+} from '../BookListing/BookItemStyles';
 import { useInput } from '../../hooks/useInput';
 import { useReduxActionCreators, useReduxState } from '../../redux/hooks';
 import { actions as bookActions } from '../../redux/reducers/books';
@@ -63,13 +63,19 @@ const cleanAuthorsString = (authorsString) => {
 export const BookItemEdit = ({
 	id,
 	title,
-	authors,
+	authors = [],
 	image_url
 }) => {
-	const isUpdating = useReduxState(state => state.books.isUpdating);
-	const isDeleting = useReduxState(state => state.books.isDeleting);
-	const updateBook = useReduxActionCreators(bookActions.updateBook);
-	const deleteBook = useReduxActionCreators(bookActions.deleteBook);
+	const {
+		isUpdating,
+		isCreating,
+		isDeleting,
+	} = useReduxState(state => state.books);
+	const {
+		createBook,
+		updateBook,
+		deleteBook,
+	} = useReduxActionCreators(bookActions);
 
 	const imageUrlInputProps = useInput(image_url);
 	const titleInputProps = useInput(title);
@@ -79,6 +85,14 @@ export const BookItemEdit = ({
 		titleInputProps.value    != title || 
 		imageUrlInputProps.value != image_url ||
 		cleanAuthorsString(authorsInputProps.value) != authors.join(',');
+
+	const handleCreateBook = () => {
+		createBook({
+			title: titleInputProps.value,
+			authors: cleanAuthorsString(authorsInputProps.value).split(','),
+			image_url: imageUrlInputProps.value,
+		});
+	}
 
 	const handleUpdateBook = () => {
 		updateBook({
@@ -90,26 +104,29 @@ export const BookItemEdit = ({
 	}
 
 	const handleDeleteBook = () => {
-		deleteBook({
-			id,
-		});
+		if (id) {
+			deleteBook({ id });
+		}
 	}
 
 	const isProcessing = isUpdating || isDeleting;
 
 	return <BookItemWrapper>
 		<BookItemImageWrapper>
-			<img src={image_url} />
+			<img src={id ? image_url : imageUrlInputProps.value} />
 		</BookItemImageWrapper>
 		<BookInfoWrapper>
 			<BookTitle type="text" {...imageUrlInputProps}  />
 			<BookTitle type="text" {...titleInputProps}  />
 			<AuthorTitle type="text" {...authorsInputProps}  />
-			{(touched || isDeleting) && <UpdateButton onClick={handleUpdateBook} disabled={isProcessing}>
+			{!id && <UpdateButton onClick={handleCreateBook} disabled={isCreating}>
+				{isCreating ? 'Creatiing' : 'Create'}
+			</UpdateButton>}
+			{id && (touched || isDeleting) && <UpdateButton onClick={handleUpdateBook} disabled={isProcessing}>
 				{isProcessing ? 'Updating' : 'Update'}
 			</UpdateButton>}
 		</BookInfoWrapper>
-		{(!isUpdating) && <RemoveButton onClick={handleDeleteBook}>X</RemoveButton>}
+		{(id && !isUpdating) && <RemoveButton onClick={handleDeleteBook}>X</RemoveButton>}
 	</BookItemWrapper>
 		
 }

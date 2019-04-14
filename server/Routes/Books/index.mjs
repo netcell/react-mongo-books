@@ -48,7 +48,7 @@ booksRoute.route('/')
 				image_url,
 			});
 
-			res.status(200).send({book});
+			res.status(200).send(book);
 		} catch (error) {
 			res.status(500).send({
 				error

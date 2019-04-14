@@ -18,7 +18,8 @@ const Loader = () => {
 }
 
 export const BookListing = ({
-	BookItemDisplayComponent
+	BookItemDisplayComponent,
+	children
 }) => {
 	const books = useReduxState(state => state.books.items);
 	const isFetching = useReduxState(state => state.books.isFetching);
@@ -27,6 +28,7 @@ export const BookListing = ({
 		{
 			isFetching && <Loader />
 		}
+		{children}
 		{
 			(!isFetching) && books.map(book => (
 				<BookItemDisplayComponent key={book.id} {...book} />
