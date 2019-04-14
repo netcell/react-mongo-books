@@ -5,7 +5,7 @@ import { AdminPage } from './page/Admin/AdminPage';
 
 export const Routes = () => {
 	return <>
-		<Route path="/" exact component={BookListingPage}/>
+		<Route path="/" component={BookListingPage}/>
         <Route path="/admin" component={AdminPage} />
 	</>;
 }
