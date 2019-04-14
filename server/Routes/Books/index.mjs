@@ -48,7 +48,7 @@ booksRoute.route('/')
 				image_url,
 			});
 
-			res.status(200).send(book);
+			res.status(200).send({book});
 		} catch (error) {
 			res.status(500).send({
 				error
@@ -71,15 +71,17 @@ booksRoute.route('/:bookId')
 		} = req.body;
 
 		try {
-			await MyModel.findOneAndUpdate({
+			const book = await Book.findOneAndUpdate({
 				_id: bookId
 			}, {
 				title,
 				authors,
 				image_url,
+			}, {
+				new: true
 			});
 
-			res.status(200).send();
+			res.status(200).send(book);
 		} catch (error) {
 			res.status(500).send({
 				error
@@ -92,9 +94,11 @@ booksRoute.route('/:bookId')
 		} = req.params;
 
 		try {
-			await MyModel.findOneAndDelete({
+			await Book.findOneAndDelete({
 				_id: bookId
 			});
+
+			await new Promise(resolve => setTimeout(resolve, 2000));
 
 			res.status(200).send();
 		} catch (error) {
