@@ -4,7 +4,7 @@ import { useInput } from './useInput';
 export const useDebounceInput = (initialValue, delay) => {
 	const {
 		value, 
-		handleChange
+		onChange
 	} = useInput(initialValue);
 	
 	const debouncedValue = useDebounce(value, delay);
@@ -12,6 +12,6 @@ export const useDebounceInput = (initialValue, delay) => {
 	return {
 		value,
 		debouncedValue, 
-		handleChange
+		onChange
 	}
 }

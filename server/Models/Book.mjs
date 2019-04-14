@@ -12,9 +12,19 @@ const Book = new Schema({
 		type: String,
 		required: true,
 	}
+}, {
+	toObject: {
+		getters: true
+	},
+	toJSON: {
+		getters: true
+	}
 });
 
 class BookClass {
+	get id() {
+		return this._id;
+	}
 	static async fetch(searchTerm, page, perPage) {
 		const query = !searchTerm ? {} : {
 			$text: { 

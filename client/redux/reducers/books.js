@@ -5,6 +5,11 @@ export const {
 	actions,
 	rootReducer,
 } = createPaginatedResource({
-  name: 'book',
-  url: `${process.env.SERVER_HOST}/books/:id`,
+  	name: 'book',
+	url: `${process.env.SERVER_HOST}/books/:id`,
+	actions: {
+		update: {
+			assignResponse: true
+		}
+	}
 });

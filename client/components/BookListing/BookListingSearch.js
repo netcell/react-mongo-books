@@ -27,7 +27,7 @@ export const BookListingSearch = () => {
 	const {
 		value,
 		debouncedValue,
-		handleChange
+		onChange
 	} = useDebounceInput(query.q, 500);
 
 	useEffect(() => {
@@ -40,6 +40,6 @@ export const BookListingSearch = () => {
 	}, [debouncedValue]);
 
 	return <SearchWrapper>
-		<SearchInput type="text" onChange={handleChange} value={value} placeholder="Tìm kiếm"/>
+		<SearchInput type="text" onChange={onChange} value={value} placeholder="Tìm kiếm"/>
 	</SearchWrapper>
 }

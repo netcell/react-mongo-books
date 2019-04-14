@@ -29,7 +29,7 @@ export const BookListing = ({
 		}
 		{
 			(!isFetching) && books.map(book => (
-				<BookItemDisplayComponent key={book._id} {...book} />
+				<BookItemDisplayComponent key={book.id} {...book} />
 			))
 		}
 	</BookListingWrapper>;	
