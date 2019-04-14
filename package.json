@@ -8,6 +8,8 @@
     "client:serve": "parcel client/index.html",
     "server:serve": "nodemon --experimental-modules netlify-lambda/server/index.mjs",
     "client:build": "parcel build client/index.html",
+    "client:build:dev": "NODE_ENV=development parcel build client/index.html --no-minify",
+    "netlify-lambda:serve": "netlify-lambda serve netlify-lambda",
     "netlify-lambda:build": "netlify-lambda build netlify-lambda",
     "netlify:build": "npm run netlify-lambda:build && npm run client:build",
     "start": "concurrently \"npm run server:serve\" \"npm run client:serve\""

@@ -40,6 +40,6 @@ export const BookListingSearch = () => {
 	}, [debouncedValue]);
 
 	return <SearchWrapper>
-		<SearchInput type="text" onChange={onChange} value={value} placeholder="Tìm kiếm"/>
+		<SearchInput type="text" onChange={onChange} value={value} placeholder="Search"/>
 	</SearchWrapper>
 }

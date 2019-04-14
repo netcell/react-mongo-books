@@ -1,7 +1,7 @@
 import classnames from 'classnames';
 import queryString from 'query-string';
 import React from 'react';
-import { Link } from 'react-router-dom/cjs/react-router-dom';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { useRouter } from '../../hooks/useRouter';
 import { useReduxState } from '../../redux/hooks';
