@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "client:serve": "parcel client/index.html",
-    "server:serve": "nodemon --experimental-modules netlify-lambda/server/index.mjs",
+    "server:serve": "nodemon netlify-lambda/server/index.js",
     "client:build": "parcel build client/index.html",
     "client:build:dev": "NODE_ENV=development parcel build client/index.html --no-minify",
     "netlify-lambda:serve": "netlify-lambda serve netlify-lambda",

@@ -1,7 +1,8 @@
-import express from 'express';
-import Book from '../../Models/Book.mjs';
+const express = require('express');
+const Book = require('../../Models/Book.js');
 
-export const booksRoute = express.Router();
+const booksRoute = express.Router();
+module.exports = booksRoute;
 
 booksRoute.route('/')
 	.get(async (req, res) => {
