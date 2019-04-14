@@ -1,11 +1,10 @@
 'use strict';
 require('dotenv').config();
-const express = require('express');
 const serverless = require('serverless-http');
-const app = express();
-const bodyParser = require('body-parser');
+const app = require('../server/app.mjs');
 
-app.use(bodyParser);
+const booksRoute = require('./Routes/Books/index.mjs').booksRoute;
+app.use('/books', booksRoute);
 
 module.exports = app;
 module.exports.handler = serverless(app);
