@@ -2,7 +2,7 @@ require('dotenv/config');
 const connected = require('./db.js');
 
 const app = require('./app.js');
-const booksRoute = require('./Routes/Books/index.js');
+const booksRoute = require('./Routes/Books');
 
 app.use('/books', booksRoute);
 
