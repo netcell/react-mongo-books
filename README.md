@@ -1,6 +1,6 @@
 # Book Listing Demo
 
-This is a demo of a book listing website with admin. Check a live version [here](https://master--zealous-austin-d3fb15.netlify.com/).
+This is a demo of a book listing website with admin.
 
 This is writen with React, Redux, React Router, Styled Component, Mongoose, Express. The Mongoose version being used is 5.4.21 since version 5.5x seems to have issue with `netlify-lambda` on Node 8.
 
