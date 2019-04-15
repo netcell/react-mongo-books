@@ -9,8 +9,8 @@
     "server:serve": "nodemon netlify-lambda/server/index.js",
     "client:build": "parcel build client/index.html",
     "client:build:dev": "NODE_ENV=development parcel build client/index.html --no-minify",
-    "netlify-lambda:serve": "netlify-lambda serve netlify-lambda",
-    "netlify-lambda:build": "netlify-lambda build netlify-lambda",
+    "netlify-lambda:serve": "netlify-lambda serve netlify-lambda -s",
+    "netlify-lambda:build": "netlify-lambda build netlify-lambda -s",
     "netlify:build": "npm run netlify-lambda:build && npm run client:build",
     "start": "concurrently \"npm run server:serve\" \"npm run client:serve\""
   },
